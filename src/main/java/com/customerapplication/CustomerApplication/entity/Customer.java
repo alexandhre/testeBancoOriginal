@@ -1,4 +1,4 @@
-package com.customerapplication.CustomerApplication.repository;
+package com.customerapplication.CustomerApplication.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,11 +6,13 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
+import java.io.Serializable;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @RedisHash("Customer")
-public class Customer {
+public class Customer implements Serializable {
     @Id
     private int id;
     private String name;
