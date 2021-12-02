@@ -21,11 +21,15 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
+	implementation 'org.jetbrains:annotations:20.1.0'
+	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation "org.springframework.data:spring-data-redis:2.2.6.RELEASE"
 	implementation "redis.clients:jedis:3.3.0"
+	implementation "com.h2database:h2"
+	implementation "javax.persistence:javax.persistence-api:2.2"
+	implementation "org.springframework.boot:spring-boot-starter-data-jpa"
 }
 
 test {

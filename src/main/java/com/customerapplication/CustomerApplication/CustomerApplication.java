@@ -1,7 +1,7 @@
 package com.customerapplication.CustomerApplication;
 
 import com.customerapplication.CustomerApplication.entity.Customer;
-import com.customerapplication.CustomerApplication.repository.CustomerDao;
+import com.customerapplication.CustomerApplication.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,31 +11,17 @@ import java.util.List;
 
 @SpringBootApplication
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/api/customer")
 public class CustomerApplication {
 
 	@Autowired
-	private CustomerDao customerDao;
-
-	@PostMapping
-	public Customer save(@RequestBody Customer customer){
-		return customerDao.save(customer);
-	}
+	private CustomerRepository customerRepository;
 
 	@GetMapping
-	public List<Customer> getAllCustomers(){
-		return customerDao.findAll();
+	public Iterable<Customer> list() {
+		return customerRepository.findAll();
 	}
 
-	@GetMapping("/{id}")
-	public Customer findCustomer(@PathVariable int id){
-		return customerDao.findCustomerById(id);
-	}
-
-	@DeleteMapping("/{id}")
-	public String remove(@PathVariable int id){
-		return customerDao.deleteCustomer(id);
-	}
 	public static void main(String[] args) {
 		SpringApplication.run(CustomerApplication.class, args);
 	}
